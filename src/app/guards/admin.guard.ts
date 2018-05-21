@@ -29,7 +29,10 @@ export class AdminGuard implements CanActivate {
       .map(user => {
         if (user.isAdmin) return true;
 
-        this.router.navigate(['/login']);
+        const returnUrl = state.url;
+        this.router.navigate(['/login'], {
+          queryParams: { returnUrl: returnUrl }
+        });
         return false;
       });
   }
