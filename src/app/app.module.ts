@@ -1,3 +1,4 @@
+import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { UserService } from './authentication/user.service';
 import { AuthService } from './authentication/auth.service';
@@ -25,7 +26,7 @@ import { LoginComponent } from './authentication/login/login.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService, UserService, AuthGuard],
+  providers: [AuthService, UserService, AuthGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
