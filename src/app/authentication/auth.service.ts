@@ -10,10 +10,13 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class AuthService {
+  authState$;
   constructor(
     private afAuth: AngularFireAuth,
     private userService: UserService
-  ) {}
+  ) {
+    this.authState$ = this.afAuth.authState;
+  }
 
   login() {
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());

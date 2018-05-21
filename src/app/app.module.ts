@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { UserService } from './authentication/user.service';
 import { AuthService } from './authentication/auth.service';
 import { environment } from './../environments/environment';
@@ -24,7 +25,7 @@ import { LoginComponent } from './authentication/login/login.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService, UserService],
+  providers: [AuthService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
