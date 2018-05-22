@@ -51,9 +51,8 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   delete() {
-    if (confirm('Are you sure to delete this item?')) {
-      this.productService.delete(this.route.snapshot.params.id);
-      this.router.navigate(['/admin/products']);
-    }
+    if (!confirm('Are you sure to delete this item?')) return;
+    this.productService.delete(this.route.snapshot.params.id);
+    this.router.navigate(['/admin/products']);
   }
 }

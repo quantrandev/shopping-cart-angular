@@ -1,3 +1,4 @@
+import { ProductFilterPipe } from './../pipes/product-filter.pipe';
 import { AdminProductService } from './admin-product/admin-product.service';
 import { AdminRoutes } from './admin-routing';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,7 @@ import { AdminCategoryService } from './admin-category/admin-category.service';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AdminProductComponent, AdminProductFormComponent],
+  declarations: [AdminProductComponent, AdminProductFormComponent, ProductFilterPipe],
   imports: [AdminRoutes, CommonModule, FormsModule, CustomFormsModule],
   providers: [AdminCategoryService, AdminProductService]
 })

@@ -1,6 +1,9 @@
 <div class="mb-2">
   <a routerLink="/admin/products/new" class="btn btn-info">New Product</a>
 </div>
+<div class="mb-2">
+  <input type="text" placeholder="Search for products ..." class="form-control" [(ngModel)]="searchName">
+</div>
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -12,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products$ | async; let i = index">
+    <tr *ngFor="let product of products$ | productFilter:searchName | async; let i = index">
       <td>{{i+1}}</td>
       <td class="image-cell">
         <img src="{{product.payload.val().imageUrl}}">

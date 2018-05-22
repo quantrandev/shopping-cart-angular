@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminProductComponent implements OnInit {
   products$;
+  searchName = '';
   constructor(private productService: AdminProductService) {
     this.products$ = this.productService.getAll();
   }
