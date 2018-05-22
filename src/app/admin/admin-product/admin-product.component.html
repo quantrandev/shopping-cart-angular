@@ -20,7 +20,7 @@
       <td>{{product.payload.val().title}}</td>
       <td>{{product.payload.val().price | currency: 'USD'}}</td>
       <td class="tools-cell">
-        <a [routerLink]="['/admin/products/edit', product.key]" class="btn btn-info">Edit</a>
+        <a [routerLink]="['/admin/products', product.key]" class="btn btn-info">Edit</a>
       </td>
     </tr>
   </tbody>

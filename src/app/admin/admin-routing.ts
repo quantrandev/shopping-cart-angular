@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const adminRoutes: Routes = [
   { path: 'products/new', component: AdminProductFormComponent },
+  { path: 'products/:id', component: AdminProductFormComponent },
   {
     path: 'products',
     component: AdminProductComponent
