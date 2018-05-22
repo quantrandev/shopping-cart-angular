@@ -21,9 +21,10 @@ export class AdminProductFormComponent implements OnInit {
   ngOnInit() {}
 
   save(f: NgForm) {
+    if (f.invalid) return;
     this.productService.create(f.value).then(res => {
       this.successMessage = f.value.title + ' was added';
-      f.reset();
+      f.resetForm();
     });
   }
 }
