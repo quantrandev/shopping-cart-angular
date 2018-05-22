@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-    if (returnUrl) localStorage.setItem('returnUrl', returnUrl);
+    localStorage.setItem('returnUrl', returnUrl || '/');
     this.auth.login();
   }
 }
