@@ -8,3 +8,20 @@ body {
 .dropdown-toggle {
     cursor: pointer;
 }
+
+/* table */
+table .order-cell {
+    width: 60px;
+}
+
+table .tools-cell {
+    width: 100px;
+}
+
+table .image-cell {
+    width: 80px;
+}
+
+table .image-cell > img {
+    max-width: 100%;
+}

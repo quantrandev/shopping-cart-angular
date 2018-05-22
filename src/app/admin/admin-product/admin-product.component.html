@@ -1,14 +1,27 @@
 <div class="mb-2">
   <a routerLink="/admin/products/new" class="btn btn-info">New Product</a>
 </div>
-<table class="table">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
+      <th class="order-cell"></th>
+      <th class="image-cell"></th>
       <th>Name</th>
       <th>Price</th>
-      <th></th>
+      <th class="tools-cell"></th>
     </tr>
   </thead>
-</table> 
-
-<router-outlet></router-outlet>
+  <tbody>
+    <tr *ngFor="let product of products$ | async; let i = index">
+      <td>{{i+1}}</td>
+      <td class="image-cell">
+        <img src="{{product.payload.val().imageUrl}}">
+      </td>
+      <td>{{product.payload.val().title}}</td>
+      <td>{{product.payload.val().price | currency: 'USD'}}</td>
+      <td class="tools-cell">
+        <a [routerLink]="['/admin/products/edit', product.key]" class="btn btn-info">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
