@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminProductService } from './../admin-product/admin-product.service';
 import { AdminCategoryService } from './../admin-category/admin-category.service';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +19,8 @@ export class AdminProductFormComponent implements OnInit {
   constructor(
     private categoryService: AdminCategoryService,
     private productService: AdminProductService,
-    private route: ActivatedRoute
+    public route: ActivatedRoute,
+    private router: Router
   ) {
     // categories for dropdown
     this.categories$ = this.categoryService.getAll();
@@ -47,5 +48,12 @@ export class AdminProductFormComponent implements OnInit {
         this.successMessage = f.value.title + ' was added';
         f.resetForm();
       });
+  }
+
+  delete() {
+    if (confirm('Are you sure to delete this item?')) {
+      this.productService.delete(this.route.snapshot.params.id);
+      this.router.navigate(['/admin/products']);
+    }
   }
 }
