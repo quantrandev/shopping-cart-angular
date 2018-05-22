@@ -22,21 +22,22 @@
       <th class="order-cell"></th>
       <th class="image-cell"></th>
       <th>Name</th>
-      <th>Price</th>
+      <th>Price ($)</th>
       <th class="tools-cell"></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products$ | productFilter:searchName:searchCategory | async; let i = index">
+    <tr *ngFor="let product of products$ | productFilter:searchName:searchCategory | async | paginate: {itemsPerPage: 5, currentPage: currentPage}; let i = index">
       <td>{{i+1}}</td>
       <td class="image-cell">
         <img src="{{product.payload.val().imageUrl}}">
       </td>
       <td>{{product.payload.val().title}}</td>
-      <td>{{product.payload.val().price | currency: 'USD'}}</td>
+      <td>{{product.payload.val().price}}</td>
       <td class="tools-cell">
         <a [routerLink]="['/admin/products', product.key]" class="btn btn-info">Edit</a>
       </td>
     </tr>
   </tbody>
 </table>
+<pagination-controls (pageChange)="currentPage = $event" class="my-pagination"></pagination-controls>
