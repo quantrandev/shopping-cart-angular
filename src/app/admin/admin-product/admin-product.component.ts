@@ -1,3 +1,4 @@
+import { AdminCategoryService } from './../admin-category/admin-category.service';
 import { AdminProductService } from './admin-product.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminProductComponent implements OnInit {
   products$;
+  categories$;
   searchName = '';
-  constructor(private productService: AdminProductService) {
+  searchCategory = '';
+  constructor(
+    private productService: AdminProductService,
+    private categoryService: AdminCategoryService
+  ) {
     this.products$ = this.productService.getAll();
+    this.categories$ = this.categoryService.getAll();
   }
 
   ngOnInit() {}
